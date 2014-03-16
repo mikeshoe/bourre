@@ -31,7 +31,7 @@ import java.util.List;
  */
 public class FiveCardHand implements Hand {
     private static final int MAX_CARDS = 5;
-    protected final List cardList = new ArrayList();
+    protected final List<Card> cardList = new ArrayList<Card>();
 
     public void addCard(Card card) throws TooManyCardsRuntimeException {
         if (cardList.size() < MAX_CARDS) {
@@ -42,7 +42,7 @@ public class FiveCardHand implements Hand {
     }
 
     public int getMaxNumberCards() {
-        return this.MAX_CARDS;
+        return MAX_CARDS;
     }
 
     public boolean isComplete() {

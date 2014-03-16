@@ -53,7 +53,7 @@ public class Deck {
         return cards.length - currentCard;
     }
 
-    public List getCards() {
+    public List<Card> getCards() {
         return Collections.unmodifiableList(Arrays.asList(cards));
     }
 

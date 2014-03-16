@@ -41,8 +41,8 @@ public class DeckTest extends TestCase {
 
     public void testDeckHas13OfEachSuiteBeforeShuffle() {
         Deck deck = getDeck();
-        List cards = deck.getCards();
-        Iterator i = cards.iterator();
+        List<?> cards = deck.getCards();
+        Iterator<?> i = cards.iterator();
         int hearts = 0;
         int spades = 0;
         int clubs = 0;
@@ -70,8 +70,8 @@ public class DeckTest extends TestCase {
     public void testDeckHas13OfEachSuiteAfterShuffle() {
         Deck deck = getDeck();
         deck.shuffle();
-        List cards = deck.getCards();
-        Iterator i = cards.iterator();
+        List<?> cards = deck.getCards();
+        Iterator<?> i = cards.iterator();
         int hearts = 0;
         int spades = 0;
         int clubs = 0;
@@ -98,8 +98,8 @@ public class DeckTest extends TestCase {
 
     public void testDeckHas4OfEachCardBeforeShuffle() {
         Deck deck = getDeck();
-        List cards = deck.getCards();
-        Iterator i = cards.iterator();
+        List<?> cards = deck.getCards();
+        Iterator<?> i = cards.iterator();
         int twos = 0;
         int threes = 0;
         int fours = 0;
@@ -162,8 +162,8 @@ public class DeckTest extends TestCase {
 
     public void testDeckHas4OfEachCardAfterShuffle() {
         Deck deck = getDeck();
-        List cards = deck.getCards();
-        Iterator i = cards.iterator();
+        List<?> cards = deck.getCards();
+        Iterator<?> i = cards.iterator();
         int twos = 0;
         int threes = 0;
         int fours = 0;
@@ -226,19 +226,19 @@ public class DeckTest extends TestCase {
 
     public void test2DecksOfUnshuffledCardsAreEqual() {
         Deck d1 = getDeck();
-        List c1 = d1.getCards();
+        List<?> c1 = d1.getCards();
         Deck d2 = getDeck();
-        List c2 = d2.getCards();
+        List<?> c2 = d2.getCards();
         assertTrue(c1.equals(c2));
     }
 
     public void test2DecksOfShuffledCardsAreNotEqual() {
         Deck d1 = getDeck();
         d1.shuffle();
-        List c1 = d1.getCards();
+        List<?> c1 = d1.getCards();
         Deck d2 = getDeck();
         d2.shuffle();
-        List c2 = d2.getCards();
+        List<?> c2 = d2.getCards();
         assertTrue(!c1.equals(c2));
     }
 

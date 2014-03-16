@@ -24,8 +24,6 @@ import com.shoesobjects.bourre.decisionstrategies.DecisionStrategy;
 import com.shoesobjects.bourre.drawstrategies.DrawStrategy;
 import com.shoesobjects.bourre.playstrategies.PlayStrategy;
 import com.shoesobjects.deckofcards.Card;
-import com.shoesobjects.deckofcards.CardSuit;
-import com.shoesobjects.deckofcards.CardValue;
 
 import java.util.Random;
 import java.util.List;
@@ -199,13 +197,13 @@ public class BourrePlayer {
             sb.append("player" + this.playerName + ".setDealer();\n");
         }
         sb.append("BourreHand hand" + this.playerName + " = new BourreHand();\n");
-        List list = this.getHand().getCards();
-        Iterator iter = list.iterator();
-        int counter = 1;
+        List<?> list = this.getHand().getCards();
+        Iterator<?> iter = list.iterator();
+        //int counter = 1;
         while(iter.hasNext()) {
             Card c = (Card) iter.next();
             sb.append("hand" + this.playerName + ".addCard(new Card(CardSuit." + c.getCardSuite().toString() + ", CardValue." + c.getCardValue().toString() +  "));\n");
-            counter++;
+            //counter++;
         }
         sb.append("player" + this.playerName + ".setHand(hand" + this.playerName + ");\n");
         if(this.isDealer()) {

@@ -34,7 +34,7 @@ public class BourreGame {
     private final static int MIN_PLAYERS = 1;
     private final static int MAX_PLAYERS = 7;
 
-    private List<BourrePlayer> players = new ArrayList();
+    private List<BourrePlayer> players = new ArrayList<BourrePlayer>();
 
     private boolean gameStarted;
 
@@ -49,9 +49,9 @@ public class BourreGame {
     private Card dealerTrumpCard;
 
     private BourrePlayer winner = null;
-    private List<BourrePlayer> matchers = new ArrayList();
+    private List<BourrePlayer> matchers = new ArrayList<BourrePlayer>();
     private String matchersByName = "";
-    private List<BourrePlayer> pushers = new ArrayList();
+    private List<BourrePlayer> pushers = new ArrayList<BourrePlayer>();
     private String pushersByName = "";
 
     private int numberOfStartingPlayers;
@@ -61,7 +61,7 @@ public class BourreGame {
     void setDealerTrumpCard(Card card) {
         this.dealerTrumpCard = card;
     }
-    public List getPlayers() {
+    public List<BourrePlayer> getPlayers() {
         return players;
     }
 
@@ -126,7 +126,7 @@ public class BourreGame {
 
     private void dealCards(Deck deck) {
         for (int i = 0; i < 5; i++) {
-            Iterator iterator = players.iterator();
+            Iterator<BourrePlayer> iterator = players.iterator();
             while (iterator.hasNext()) {
                 BourrePlayer p = (BourrePlayer) iterator.next();
                 p.addCardToHand(deck.draw());
@@ -165,7 +165,7 @@ public class BourreGame {
 
     public void getPlayerDecisions() {
         int numChecks = 0;
-        Iterator iter = players.iterator();
+        Iterator<BourrePlayer> iter = players.iterator();
         while (iter.hasNext() && this.position.isStillOpen()) {
             BourrePlayer player = (BourrePlayer) iter.next();
             if (player.isUndecided()) {
@@ -189,7 +189,7 @@ public class BourreGame {
     }
 
     private void removeOutPlayers() {
-        Iterator iter = players.iterator();
+        Iterator<BourrePlayer> iter = players.iterator();
         while (iter.hasNext()) {
             BourrePlayer bp = (BourrePlayer) iter.next();
             if (DecisionStrategy.Decision.OUT.equals(bp.getDecision())) {
@@ -200,7 +200,7 @@ public class BourreGame {
 
     void dealPlayerDrawCards() {
 
-        Iterator iter = getPlayers().iterator();
+        Iterator<BourrePlayer> iter = getPlayers().iterator();
         drawPosition = new DrawPosition(getNumberOfStartingPlayers(), getNumberOfPlayers());
         while (iter.hasNext()) {
             BourrePlayer player = (BourrePlayer) iter.next();
@@ -254,8 +254,7 @@ public class BourreGame {
     }
 
     private boolean allPlayersCheck() {
-        boolean allCheck = true;
-        Iterator iter = players.iterator();
+        Iterator<BourrePlayer> iter = players.iterator();
         while (iter.hasNext()) {
             BourrePlayer p = (BourrePlayer) iter.next();
             if (!p.isUndecided()) {
@@ -326,12 +325,12 @@ public class BourreGame {
         drawPosition = null;
         playScenario = new PlayScenario();
         winner = null;
-        matchers = new ArrayList();
+        matchers = new ArrayList<BourrePlayer>();
         matchersByName = "";
-        pushers = new ArrayList();
+        pushers = new ArrayList<BourrePlayer>();
         pushersByName = "";
 
-        List<BourrePlayer> newPlayers = new ArrayList();
+        List<BourrePlayer> newPlayers = new ArrayList<BourrePlayer>();
         for (int i = 1; i < players.size(); i++) {
             BourrePlayer bp = players.get(i);
             bp.reset();
@@ -341,7 +340,7 @@ public class BourreGame {
         BourrePlayer newDealer = players.get(0);
         newDealer.reset();
         newPlayers.add(newDealer);
-        players = new ArrayList(newPlayers);
+        players = new ArrayList<BourrePlayer>(newPlayers);
         startGame();
         playGame();
 
@@ -358,7 +357,7 @@ public class BourreGame {
 
     private void calcGameOutcome() {
 
-        Iterator iter = players.iterator();
+        Iterator<BourrePlayer> iter = players.iterator();
         while (iter.hasNext()) {
             BourrePlayer bp = (BourrePlayer) iter.next();
             if (bp.getNumberOfWins() >= 3) {
@@ -407,7 +406,7 @@ public class BourreGame {
     StringBuilder sb = new StringBuilder();
         sb.append("///// Unit Test Automated Game Setup - Start /////\n");
         sb.append("BourreGame game = new BourreGame();\n\n");
-        Iterator iter = this.getPlayers().listIterator();
+        Iterator<BourrePlayer> iter = this.getPlayers().listIterator();
         while(iter.hasNext()) {
             BourrePlayer player = (BourrePlayer)iter.next();
             sb.append(player.toCode());

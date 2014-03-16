@@ -23,5 +23,10 @@ package com.shoesobjects.bourre.game;
 
 public class BourreGameException extends RuntimeException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1331508740913080093L;
+
 
 }

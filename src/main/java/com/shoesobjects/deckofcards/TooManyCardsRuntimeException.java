@@ -24,4 +24,9 @@ package com.shoesobjects.deckofcards;
 
 public class TooManyCardsRuntimeException extends RuntimeException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2209794353332346920L;
+
 }

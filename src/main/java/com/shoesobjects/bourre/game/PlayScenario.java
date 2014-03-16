@@ -31,8 +31,8 @@ import java.util.List;
 public class PlayScenario {
     private BourreHand hand;
     private Card dealerTrumpCard;
-    private List<Card> cardsPlayed = new ArrayList();
-    private List<BourrePlayer> players = new ArrayList();
+    private List<Card> cardsPlayed = new ArrayList<Card>();
+    private List<BourrePlayer> players = new ArrayList<BourrePlayer>();
     private int numberOfPlayers;
 
 
@@ -74,7 +74,7 @@ public class PlayScenario {
         if (cardsPlayed.size() > 0) {
             highestCard = this.cardsPlayed.get(0);
         }
-        Iterator iter = cardsPlayed.iterator();
+        Iterator<Card> iter = cardsPlayed.iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (c.getCardSuite().equals(highestCard.getCardSuite())) {
@@ -103,7 +103,7 @@ public class PlayScenario {
     }
 
     public boolean hasTrumpBeenPlayed() {
-        Iterator iter = cardsPlayed.iterator();
+        Iterator<Card> iter = cardsPlayed.iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (c.getCardSuite().equals(this.dealerTrumpCard.getCardSuite())) {
@@ -135,7 +135,7 @@ public class PlayScenario {
 
     public Card getHighestTrumpPlayed() {
         Card highestTrump = null;
-        Iterator iter = cardsPlayed.iterator();
+        Iterator<Card> iter = cardsPlayed.iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (c.getCardSuite().equals(this.dealerTrumpCard.getCardSuite())) {
@@ -177,8 +177,8 @@ public class PlayScenario {
 
     public int determineWinningPlayerForHand() {
         Card winningCard = null;
-        BourrePlayer winningPlayer = null;
-        Iterator iter = this.players.iterator();
+        //BourrePlayer winningPlayer = null;
+        //Iterator<BourrePlayer> iter = this.players.iterator();
         int winningPlayerIndex = 0;
         for (int i = 0; i < this.players.size(); i++) {
             BourrePlayer p = (BourrePlayer) this.players.get(i);
@@ -187,7 +187,7 @@ public class PlayScenario {
             //Card Played
             if (winningCard == null) {
                 winningCard = cardPlayed;
-                winningPlayer = p;
+                //winningPlayer = p;
                 winningPlayerIndex = i;
             }
 
@@ -195,12 +195,12 @@ public class PlayScenario {
             if (cardPlayed.isSameSuit(winningCard)) {
                 if (cardPlayed.isHigherValue(winningCard)) {
                     winningCard = cardPlayed;
-                    winningPlayer = p;
+                    //winningPlayer = p;
                     winningPlayerIndex = i;
                 }
             } else if (cardPlayed.isSameSuit(this.dealerTrumpCard)) {  //Trumped Card Led
                 winningCard = cardPlayed;
-                winningPlayer = p;
+                //winningPlayer = p;
                 winningPlayerIndex = i;
             }
 
@@ -218,7 +218,7 @@ public class PlayScenario {
     }
 
     public boolean hasOnlyTrump() {
-        Iterator iter = this.getHand().getCards().iterator();
+        Iterator<?> iter = this.getHand().getCards().iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (!c.getCardSuite().equals(this.dealerTrumpCard.getCardSuite())) {

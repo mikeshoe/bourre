@@ -36,7 +36,7 @@ public class BourreHand extends FiveCardHand {
 
     public int getNumberOfHigherTrumpCards(Card trumpCard) {
         int numHigherTrump = 0;
-        Iterator iter = cardList.iterator();
+        Iterator<?> iter = cardList.iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (c.getCardSuite() == trumpCard.getCardSuite() &&
@@ -50,7 +50,7 @@ public class BourreHand extends FiveCardHand {
 
     public int getNumberOfLowerTrumpCards(Card trumpCard) {
         int numLowerTrump = 0;
-        Iterator iter = cardList.iterator();
+        Iterator<?> iter = cardList.iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (c.getCardSuite() == trumpCard.getCardSuite() &&
@@ -63,7 +63,7 @@ public class BourreHand extends FiveCardHand {
     }
 
     public boolean hasHighestTrumpCard(Card trumpCard) {
-        Iterator iter = cardList.iterator();
+        Iterator<?> iter = cardList.iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (c.getCardSuite() == trumpCard.getCardSuite() &&
@@ -78,7 +78,7 @@ public class BourreHand extends FiveCardHand {
 
     public boolean hasFaceTrumpCard(Card trumpCard) {
         Card highestTrump = null;
-        Iterator iter = cardList.iterator();
+        Iterator<?> iter = cardList.iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (c.getCardSuite() == trumpCard.getCardSuite()) {
@@ -95,13 +95,13 @@ public class BourreHand extends FiveCardHand {
         return highestTrump.getCardValue().isHigher(CardValue.TEN);
     }
 
-    public List getCards() {
+    public List<?> getCards() {
         return cardList;
     }
 
-    public List getCards(Card.Status status) {
-        List cards = new ArrayList();
-        Iterator iter = cardList.iterator();
+    public List<Card> getCards(Card.Status status) {
+        List<Card> cards = new ArrayList<Card>();
+        Iterator<?> iter = cardList.iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (c.getStatus().equals(status)) {
@@ -118,7 +118,7 @@ public class BourreHand extends FiveCardHand {
 
 
     public boolean hasSuit(CardSuit suit) {
-        Iterator iter = cardList.iterator();
+        Iterator<?> iter = cardList.iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (c.getCardSuite().equals(suit)) {
@@ -131,7 +131,7 @@ public class BourreHand extends FiveCardHand {
 
     public Card getHighestCardOfSuit(CardSuit suit) {
         Card highest = null;
-        Iterator iter = cardList.iterator();
+        Iterator<?> iter = cardList.iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (c.getCardSuite().equals(suit)) {
@@ -148,7 +148,7 @@ public class BourreHand extends FiveCardHand {
 
     public Card getLowestCardOfSuit(CardSuit suit) {
         Card lowest = null;
-        Iterator iter = cardList.iterator();
+        Iterator<?> iter = cardList.iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (c.getCardSuite().equals(suit)) {
@@ -165,7 +165,7 @@ public class BourreHand extends FiveCardHand {
 
     public Card getHighestOffSuitCard(CardSuit trumpSuit) {
         Card highest = null;
-        Iterator iter = cardList.iterator();
+        Iterator<?> iter = cardList.iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (!c.getCardSuite().equals(trumpSuit)) {
@@ -182,7 +182,7 @@ public class BourreHand extends FiveCardHand {
 
     public Card getLowestOffSuitCard(CardSuit trumpSuit) {
         Card lowest = null;
-        Iterator iter = cardList.iterator();
+        Iterator<?> iter = cardList.iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (!c.getCardSuite().equals(trumpSuit)) {
@@ -200,8 +200,8 @@ public class BourreHand extends FiveCardHand {
 
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        List list = this.getCards();
-        Iterator iter = list.iterator();
+        List<?> list = this.getCards();
+        Iterator<?> iter = list.iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             builder.append(c.toString());

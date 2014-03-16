@@ -50,7 +50,7 @@ public class DrawStrategy {
     }
 
     protected void holdAllTrumpCards(BourreHand hand, CardSuit trumpSuit) {
-        Iterator iter = hand.getCards().iterator();
+        Iterator<?> iter = hand.getCards().iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (c.getCardSuite().equals(trumpSuit)) {
@@ -61,7 +61,7 @@ public class DrawStrategy {
 
     protected void discardRemaining(BourreHand hand) {
         int discardCounter = 0;
-        Iterator iter = hand.getCards().iterator();
+        Iterator<?> iter = hand.getCards().iterator();
         while (iter.hasNext()) {
             Card c = (Card) iter.next();
             if (c.isUndecided()) {

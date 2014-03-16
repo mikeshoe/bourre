@@ -27,7 +27,7 @@ import java.util.List;
 public class DrawPosition {
     private Integer numberOfStartingPlayers;
     private Integer numberOfActivePlayers;
-    private List drawAmountList = new ArrayList();
+    private List<Integer> drawAmountList = new ArrayList<Integer>();
 
     public DrawPosition(Integer numberOfStartingPlayers, Integer numberOfActivePlayers) {
         this.numberOfStartingPlayers = numberOfStartingPlayers;

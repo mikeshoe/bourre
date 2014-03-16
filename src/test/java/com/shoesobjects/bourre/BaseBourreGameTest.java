@@ -313,8 +313,8 @@ public class BaseBourreGameTest extends TestCase {
     }
 
 
-    protected List getListOfPlayers(int numberOfPlayers) {
-        List playerList = new ArrayList();
+    protected List<BourrePlayer> getListOfPlayers(int numberOfPlayers) {
+        List<BourrePlayer> playerList = new ArrayList<BourrePlayer>();
         for (int i = 0; i < numberOfPlayers; i++) {
             BourrePlayer p = getPlayer("Fred" + i);
             playerList.add(p);
